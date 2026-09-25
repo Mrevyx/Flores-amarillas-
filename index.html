@@ -1,179 +1,558 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti 🌻</title>
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden}
-body{
-  background:#02030d;
-  color:#fff;
-  font-family:Georgia,"Times New Roman",serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  cursor:pointer;
-}
-#space{position:fixed;inset:0;background:
-  radial-gradient(circle at 50% 45%,rgba(76,35,130,.38),transparent 30%),
-  radial-gradient(circle at 20% 20%,rgba(20,90,160,.18),transparent 28%),
-  radial-gradient(circle at 80% 75%,rgba(150,55,120,.16),transparent 30%),
-  #02030d}
-#space:before{
-  content:"";position:absolute;inset:-20%;
-  background:
-   radial-gradient(ellipse at 50% 50%,transparent 0 25%,rgba(255,255,255,.04) 26%,transparent 42%),
-   repeating-radial-gradient(ellipse at center,rgba(150,90,255,.07) 0 2px,transparent 3px 18px);
-  transform:rotate(-18deg);
-  filter:blur(2px);
-  animation:galaxy 22s linear infinite;
-}
-@keyframes galaxy{to{transform:rotate(342deg) scale(1.08)}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Mi Amor ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.star{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 7px #fff;animation:twinkle var(--d) ease-in-out infinite alternate}
-@keyframes twinkle{from{opacity:.2;transform:scale(.6)}to{opacity:1;transform:scale(1.25)}}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-.shooting{position:absolute;width:2px;height:90px;background:linear-gradient(transparent,#fff,transparent);transform:rotate(45deg);opacity:0;animation:shoot 6s linear infinite}
-@keyframes shoot{
-  0%,70%{opacity:0;transform:translate(0,0) rotate(45deg)}
-  74%{opacity:1}
-  85%{opacity:0;transform:translate(-350px,350px) rotate(45deg)}
-  100%{opacity:0}
-}
+        /* Corazones flotantes de fondo */
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-.card{
-  position:relative;z-index:5;width:min(90%,650px);padding:42px 28px;
-  text-align:center;border-radius:30px;
-  background:rgba(4,5,22,.58);
-  border:1px solid rgba(255,214,71,.32);
-  box-shadow:0 0 45px rgba(255,208,50,.12),inset 0 0 35px rgba(255,255,255,.025);
-  backdrop-filter:blur(8px);
-  opacity:0;transform:scale(.82);
-  animation:cardIn 2s 1s forwards cubic-bezier(.2,.8,.2,1);
-}
-@keyframes cardIn{to{opacity:1;transform:scale(1)}}
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.4);
+            animation: float 8s ease-in infinite;
+        }
 
-.small{font-size:16px;letter-spacing:4px;color:#ffe98a;text-transform:uppercase}
-h1{
-  margin:15px 0 20px;font-size:clamp(40px,11vw,72px);color:#ffd83d;
-  text-shadow:0 0 15px rgba(255,216,61,.8),0 0 40px rgba(255,190,20,.35);
-}
-.message{font-size:clamp(19px,5vw,26px);line-height:1.7;color:#fff8d7}
-.tap{margin-top:25px;color:#d9d2ff;font-size:14px;opacity:.8}
-.heart{font-size:46px;animation:beat 1.4s infinite}
-@keyframes beat{50%{transform:scale(1.22)}}
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg) scale(1.2);
+                opacity: 0;
+            }
+        }
 
-.flower{
-  position:fixed;bottom:-70px;z-index:3;font-size:clamp(24px,7vw,42px);
-  filter:drop-shadow(0 0 8px rgba(255,210,30,.7));
-  animation:rise var(--t) linear forwards;
-  pointer-events:none;
-}
-@keyframes rise{
-  0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:0}
-  10%{opacity:1}
-  50%{transform:translateY(-55vh) rotate(180deg) translateX(35px)}
-  100%{transform:translateY(-115vh) rotate(360deg) translateX(-45px);opacity:0}
-}
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-#surprise{
-  position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;
-  background:rgba(2,3,13,.72);backdrop-filter:blur(4px);
-  opacity:0;pointer-events:none;transition:.7s;
-}
-#surprise.show{opacity:1;pointer-events:auto}
-.final{
-  text-align:center;padding:35px 25px;width:88%;max-width:560px;
-  animation:float 2.5s ease-in-out infinite alternate;
-}
-@keyframes float{to{transform:translateY(-10px)}}
-.final .big{font-size:80px}
-.final h2{font-size:clamp(34px,9vw,58px);color:#ffd83d;text-shadow:0 0 25px #ffcf35;margin:10px 0}
-.final p{font-size:21px;line-height:1.6}
-button{
-  margin-top:18px;border:1px solid rgba(255,216,61,.5);background:rgba(255,216,61,.12);
-  color:#fff5b5;border-radius:999px;padding:12px 22px;font-size:15px;
-}
-</style>
+        /* Encabezado */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.9), 0 0 60px rgba(255,182,193,0.8); }
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+
+        /* Contador de fotos */
+        .photo-counter {
+            text-align: center;
+            color: white;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* Galería principal */
+        .gallery-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 25px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            border: 5px solid white;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Caja de mensaje */
+        .message-box {
+            background: linear-gradient(135deg, #ffeef8 0%, #e8f4f8 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            min-height: 180px;
+            position: relative;
+            border-left: 5px solid #667eea;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .message-box::before {
+            content: '"';
+            font-size: 5em;
+            color: #667eea;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .message-text {
+            font-size: 1.15em;
+            line-height: 1.9;
+            color: #444;
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .message-text strong {
+            color: #764ba2;
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-size: 0.95em;
+        }
+
+        /* Controles de navegación */
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-nav {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        /* Indicadores de progreso */
+        .indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.3);
+        }
+
+        /* Sección final */
+        .final-message {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            color: white;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .final-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .final-message p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            .photo-frame img {
+                height: 350px;
+            }
+            .message-text {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+
+        /* Botón de música */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            cursor: pointer;
+            font-size: 1.8em;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .music-btn.playing {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
 </head>
 <body>
+    <!-- Corazones flotantes -->
+    <div class="hearts" id="hearts"></div>
 
-<div id="space"></div>
-<div class="shooting" style="top:12%;right:8%;animation-delay:1s"></div>
-<div class="shooting" style="top:35%;left:5%;animation-delay:4s"></div>
+    <div class="container">
+        <!-- Encabezado -->
+        <div class="header">
+            <h1>¡Feliz Cumpleaños Mi Amor!</h1>
+            <p>Cada foto cuenta una historia de nosotros... ❤️</p>
+        </div>
 
-<div class="card">
-  <div class="heart">💛</div>
-  <div class="small">Un pequeño detalle para ti</div>
-  <h1>🌻 Para ti 🌻</h1>
-  <div class="message">
-    Te quiero mucho. 💛<br><br>
-    En este día tan especial, espero que seas muy feliz
-    y disfrutes muchísimo tu día.<br><br>
-    Que nunca te falten motivos para sonreír
-    y que hoy esté lleno de momentos bonitos.
-    <br><br>🌻✨
-  </div>
-  <div class="tap">Toca la pantalla para una sorpresa ✨</div>
-</div>
+        <!-- Contador -->
+        <div class="photo-counter">
+            <span id="counter">Foto 1 de 7</span>
+        </div>
 
-<div id="surprise">
-  <div class="final">
-    <div class="big">🌻💛🌻</div>
-    <h2>Feliz día</h2>
-    <p>
-      Espero que estas florecitas te recuerden
-      lo especial que eres y que tengas un día hermoso.
-    </p>
-    <div class="big">🌻✨💛✨🌻</div>
-    <button onclick="closeSurprise(event)">Volver al universo</button>
-  </div>
-</div>
+        <!-- Galería -->
+        <div class="gallery-container">
+            <div class="photo-frame">
+                <img id="photo" src="" alt="Nuestro recuerdo">
+            </div>
 
-<script>
-const space=document.getElementById("space");
+            <div class="message-box">
+                <p class="message-text" id="message"></p>
+            </div>
 
-// Crear estrellas
-for(let i=0;i<140;i++){
-  const s=document.createElement("span");
-  s.className="star";
-  s.style.left=Math.random()*100+"%";
-  s.style.top=Math.random()*100+"%";
-  const size=Math.random()*2.5+1;
-  s.style.width=s.style.height=size+"px";
-  s.style.setProperty("--d",(1.5+Math.random()*4)+"s");
-  s.style.animationDelay=(-Math.random()*4)+"s";
-  space.appendChild(s);
-}
+            <!-- Controles -->
+            <div class="controls">
+                <button class="btn btn-nav" id="prevBtn" onclick="changePhoto(-1)">◀</button>
+                <button class="btn" onclick="randomPhoto()">🎲 Aleatoria</button>
+                <button class="btn btn-nav" id="nextBtn" onclick="changePhoto(1)">▶</button>
+            </div>
 
-// Flores flotantes
-function flower(){
-  const f=document.createElement("div");
-  f.className="flower";
-  f.textContent=Math.random()>.45?"🌻":"🌼";
-  f.style.left=Math.random()*100+"vw";
-  f.style.setProperty("--t",(7+Math.random()*7)+"s");
-  document.body.appendChild(f);
-  setTimeout(()=>f.remove(),15000);
-}
-setInterval(flower,650);
+            <!-- Indicadores -->
+            <div class="indicators" id="indicators"></div>
+        </div>
 
-// Sorpresa al tocar
-const surprise=document.getElementById("surprise");
-document.body.addEventListener("click",e=>{
-  if(e.target.tagName==="BUTTON") return;
-  surprise.classList.add("show");
-  for(let i=0;i<18;i++) setTimeout(flower,i*90);
-});
+        <!-- Mensaje final -->
+        <div class="final-message">
+            <h2>Gracias por ser mi compañera de vida</h2>
+            <p>Este es solo el comienzo de nuestra historia. Cada día a tu lado es un regalo, 
+               y prometo seguir construyendo recuerdos inolvidables contigo. 
+               Te amo más de lo que las palabras pueden expresar. 💕</p>
+        </div>
+    </div>
 
-function closeSurprise(e){
-  e.stopPropagation();
-  surprise.classList.remove("show");
-}
-</script>
+    <!-- Botón de música (opcional - necesitas agregar tu archivo de audio) -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+    <script>
+        // Datos de fotos y mensajes
+        const photos = [
+            {
+                // Foto 1 - Luz del sol
+                src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500",
+                message: "Desde el primer día que te vi, supe que mi vida cambiaría para siempre. Esa luz que llevas dentro ilumina cada rincón de mi existencia. Sigues brillando con fuerza, mi amor, porque el mundo necesita tu luz. ✨",
+                personal: "Recuerdo cuando nos conocimos y esa sonrisa tuya me dejó sin palabras..."
+            },
+            {
+                // Foto 2 - Orejitas de oso
+                src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500",
+                message: "Tu alegría es contagiosa, tu risa mi melodía favorita. Nunca dejes de ser esa persona divertida y auténtica que me enamoró. Contigo hasta los días grises se vuelven de colores. 🐻💛",
+                personal: "Siempre me haces reír con tus locuras, y eso es algo que atesoro cada día."
+            },
+            {
+                // Foto 3 - Collar
+                src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500",
+                message: "Eres más fuerte de lo que crees, más valiente de lo que imaginas y más amada de lo que sabes. Cada obstáculo que has superado te ha hecho la mujer increíble que eres hoy. Sigue adelante, mi guerrera. 💪❤️",
+                personal: "He visto tu fuerza en los momentos difíciles, y eso me hace admirarte infinitamente."
+            },
+            {
+                // Foto 4 - Corazones
+                src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+                message: "Mi corazón late al compás del tuyo. Eres el sueño que no sabía que tenía, la respuesta a mis oraciones. Gracias por elegirme cada día para caminar a tu lado. Eres mi persona favorita en el mundo. 💕",
+                personal: "Desde que llegaste, mi corazón encontró su hogar en ti."
+            },
+            {
+                // Foto 5 - Blanco y negro
+                src: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=500",
+                message: "Incluso en los días en blanco y negro, encuentro mil colores en tu mirada. Eres mi musa, mi inspiración, mi razón para ser mejor. Nunca dudes de lo especial que eres para mí. 🖤🤍",
+                personal: "Recuerdo cuando pasamos ese momento tan especial juntos..."
+            },
+            {
+                // Foto 6 - Fantasmas
+                src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500",
+                message: "Aunque a veces los miedos acechen como fantasmas, siempre estaré aquí para protegerte, para darte la mano y recordarte que juntos podemos con todo. Eres valiente, eres fuerte, eres imparable. 👻💜",
+                personal: "Siempre estaré para ti, en las buenas y en las que dan miedo."
+            },
+            {
+                // Foto 7 - Sonrisa
+                src: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=500",
+                message: "Tu sonrisa es mi lugar favorito en el mundo. Prometo hacer todo lo posible para que la vea cada día de nuestras vidas. Feliz cumpleaños, mi amor. Aquí estoy, y aquí seguiré, amándote sin condiciones. 🎂🎉💕",
+                personal: "Esta foto captura tu esencia: hermosa, única y completamente tuya."
+            }
+        ];
+
+        let currentIndex = 0;
+        let isPlaying = false;
+
+        // Crear corazones flotantes
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Crear indicadores
+        function createIndicators() {
+            const container = document.getElementById('indicators');
+            photos.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.onclick = () => goToPhoto(index);
+                container.appendChild(dot);
+            });
+        }
+
+        // Actualizar foto y mensaje
+        function updateDisplay() {
+            const photo = document.getElementById('photo');
+            const message = document.getElementById('message');
+            const counter = document.getElementById('counter');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // Animación de transición
+            photo.style.opacity = '0';
+            message.style.opacity = '0';
+
+            setTimeout(() => {
+                photo.src = photos[currentIndex].src;
+                message.innerHTML = photos[currentIndex].message + 
+                    '<strong>— ' + photos[currentIndex].personal + '</strong>';
+                counter.textContent = `Foto ${currentIndex + 1} de ${photos.length}`;
+                
+                photo.style.opacity = '1';
+                message.style.opacity = '1';
+            }, 200);
+
+            // Actualizar indicadores
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+
+            // Actualizar botones
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === photos.length - 1;
+        }
+
+        // Cambiar foto
+        function changePhoto(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex >= photos.length) currentIndex = photos.length - 1;
+            updateDisplay();
+        }
+
+        // Ir a foto específica
+        function goToPhoto(index) {
+            currentIndex = index;
+            updateDisplay();
+        }
+
+        // Foto aleatoria
+        function randomPhoto() {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * photos.length);
+            } while (newIndex === currentIndex && photos.length > 1);
+            currentIndex = newIndex;
+            updateDisplay();
+        }
+
+        // Música (opcional - requiere archivo de audio)
+        function toggleMusic() {
+            const btn = document.getElementById('musicBtn');
+            isPlaying = !isPlaying;
+            btn.classList.toggle('playing', isPlaying);
+            btn.textContent = isPlaying ? '🔊' : '🎵';
+            // Aquí puedes agregar tu lógica de audio
+            // const audio = document.getElementById('backgroundMusic');
+            // isPlaying ? audio.play() : audio.pause();
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changePhoto(-1);
+            if (e.key === 'ArrowRight') changePhoto(1);
+        });
+
+        // Inicializar
+        createHearts();
+        createIndicators();
+        updateDisplay();
+
+        // Cambio automático cada 30 segundos (opcional)
+        setInterval(() => {
+            if (currentIndex < photos.length - 1) {
+                changePhoto(1);
+            } else {
+                currentIndex = 0;
+                updateDisplay();
+            }
+        }, 30000);
+    </script>
 </body>
 </html>
 
