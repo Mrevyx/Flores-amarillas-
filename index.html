@@ -1,397 +1,826 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Cumpleaños Mi Amor ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+<title>Feliz Cumpleaños Mi Amor ❤️</title>
 
-        /* Corazones flotantes de fondo */
-        .hearts {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.4);
-            animation: float 8s ease-in infinite;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg) scale(0.5);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg) scale(1.2);
-                opacity: 0;
-            }
-        }
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
 
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,180,220,.20), transparent 30%),
+        linear-gradient(135deg, #160d2b, #4b185e, #9b3c72);
+    color: white;
+    overflow-x: hidden;
+}
 
-        /* Encabezado */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-            animation: fadeInDown 1s ease;
-        }
+/* =========================
+   CORAZONES
+========================= */
 
-        .header h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
+.hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
 
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
-            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.9), 0 0 60px rgba(255,182,193,0.8); }
-        }
+.heart {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255,255,255,.55);
+    animation: floatHeart linear infinite;
+    filter: drop-shadow(0 0 8px rgba(255,150,220,.6));
+}
 
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.95;
-            margin-top: 10px;
-        }
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.5);
+        opacity: 0;
+    }
 
-        /* Contador de fotos */
-        .photo-counter {
-            text-align: center;
-            color: white;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
+    15% {
+        opacity: 1;
+    }
 
-        /* Galería principal */
-        .gallery-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease 0.3s both;
-        }
+    100% {
+        transform: translateY(-115vh) rotate(720deg) scale(1.3);
+        opacity: 0;
+    }
+}
 
-        .photo-frame {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 25px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-            border: 5px solid white;
-        }
+/* =========================
+   CONTENEDOR
+========================= */
 
-        .photo-frame img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    padding: 20px;
+}
 
-        .photo-frame:hover img {
-            transform: scale(1.05);
-        }
+/* =========================
+   PORTADA
+========================= */
 
-        /* Caja de mensaje */
-        .message-box {
-            background: linear-gradient(135deg, #ffeef8 0%, #e8f4f8 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 20px;
-            min-height: 180px;
-            position: relative;
-            border-left: 5px solid #667eea;
-            animation: fadeIn 0.5s ease;
-        }
+.cover {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
 
-        .message-box::before {
-            content: '"';
-            font-size: 5em;
-            color: #667eea;
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            opacity: 0.2;
-            font-family: Georgia, serif;
-        }
+.cover-content {
+    max-width: 650px;
+    animation: appear 1.5s ease;
+}
 
-        .message-text {
-            font-size: 1.15em;
-            line-height: 1.9;
-            color: #444;
-            text-align: center;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-            font-family: 'Poppins', sans-serif;
-        }
+.cover-heart {
+    font-size: 75px;
+    animation: heartbeat 1.6s infinite;
+    margin-bottom: 20px;
+}
 
-        .message-text strong {
-            color: #764ba2;
-            display: block;
-            margin-top: 15px;
-            font-style: normal;
-            font-size: 0.95em;
-        }
+.cover h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3rem, 12vw, 6rem);
+    line-height: 1;
+    text-shadow:
+        0 0 15px rgba(255,255,255,.5),
+        0 0 40px rgba(255,120,200,.7);
+}
 
-        /* Controles de navegación */
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
+.cover p {
+    margin-top: 25px;
+    font-size: 1.05rem;
+    opacity: .9;
+}
 
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+.start-button {
+    margin-top: 35px;
+    padding: 15px 32px;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255,255,255,.95);
+    color: #7a285d;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 35px rgba(0,0,0,.3);
+    transition: .3s;
+}
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
+.start-button:hover {
+    transform: scale(1.07);
+}
 
-        .btn:active {
-            transform: translateY(-1px);
-        }
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
 
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-        .btn-nav {
-            width: 50px;
-            height: 50px;
-            padding: 0;
-            border-radius: 50%;
-            justify-content: center;
-            font-size: 1.5em;
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        /* Indicadores de progreso */
-        .indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
-        }
+/* =========================
+   PAGINA PRINCIPAL
+========================= */
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.main-page {
+    display: none;
+}
 
-        .dot.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transform: scale(1.3);
-        }
+.header {
+    text-align: center;
+    padding: 35px 15px 20px;
+}
 
-        /* Sección final */
-        .final-message {
-            text-align: center;
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            color: white;
-            backdrop-filter: blur(10px);
-            animation: fadeInUp 1s ease 0.6s both;
-        }
+.header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3rem, 9vw, 5rem);
+    text-shadow: 0 0 30px rgba(255,170,220,.7);
+}
 
-        .final-message h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
-            margin-bottom: 15px;
-        }
+.header p {
+    margin-top: 8px;
+    opacity: .9;
+}
 
-        .final-message p {
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
+/* =========================
+   GALERÍA
+========================= */
 
-        /* Animaciones */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.gallery-container {
+    background: rgba(255,255,255,.94);
+    color: #44233d;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.4),
+        0 0 50px rgba(255,120,200,.15);
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.photo-counter {
+    text-align: center;
+    color: #7a285d;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+.photo-frame {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 25px;
+    overflow: hidden;
+    background: #170d20;
+    box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    border: 5px solid white;
+}
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 2.5em;
-            }
-            .photo-frame img {
-                height: 350px;
-            }
-            .message-text {
-                font-size: 1em;
-            }
-            .btn {
-                padding: 12px 25px;
-                font-size: 1em;
-            }
-        }
+.photo-frame img {
+    width: 100%;
+    height: min(65vh, 600px);
+    object-fit: cover;
+    display: block;
+    transition: opacity .35s ease, transform .5s ease;
+}
 
-        /* Botón de música */
-        .music-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.9);
-            border: none;
-            cursor: pointer;
-            font-size: 1.8em;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
+.photo-frame.fade img {
+    opacity: 0;
+    transform: scale(1.04);
+}
 
-        .music-btn:hover {
-            transform: scale(1.1);
-        }
+/* =========================
+   MENSAJE
+========================= */
 
-        .music-btn.playing {
-            animation: pulse 1s infinite;
-        }
+.message-box {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 22px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff0f7, #f3eaff);
+    border-left: 5px solid #d94c9b;
+}
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-    </style>
+.message-box h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #a83272;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.message-box p {
+    line-height: 1.7;
+    color: #57384e;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.control-button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    background: #a83272;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    transition: .25s;
+}
+
+.control-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(168,50,114,.35);
+}
+
+/* =========================
+   INDICADOR
+========================= */
+
+.tap-hint {
+    text-align: center;
+    margin-top: 18px;
+    color: #7a285d;
+    font-size: .9rem;
+    opacity: .75;
+    animation: pulseHint 2s infinite;
+}
+
+@keyframes pulseHint {
+    0%,100% { opacity: .45; }
+    50% { opacity: 1; }
+}
+
+/* =========================
+   CARTA FINAL
+========================= */
+
+.letter {
+    margin-top: 30px;
+    background: rgba(255,255,255,.96);
+    color: #4c3044;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    text-align: center;
+}
+
+.letter h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.7rem;
+    color: #a83272;
+    margin-bottom: 15px;
+}
+
+.letter p {
+    line-height: 1.8;
+}
+
+.signature {
+    margin-top: 25px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #a83272;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 35px 10px;
+    opacity: .75;
+    font-size: .85rem;
+}
+
+/* =========================
+   CORAZÓN AL TOCAR
+========================= */
+
+.click-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99;
+    font-size: 25px;
+    animation: clickHeart 1s ease forwards;
+}
+
+@keyframes clickHeart {
+    0% {
+        transform: translate(-50%,-50%) scale(.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%,-150px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 12px;
+    }
+
+    .gallery-container {
+        padding: 12px;
+        border-radius: 22px;
+    }
+
+    .photo-frame img {
+        height: 55vh;
+    }
+
+    .message-box {
+        padding: 20px;
+    }
+
+    .letter {
+        padding: 22px;
+    }
+}
+</style>
 </head>
+
 <body>
-    <!-- Corazones flotantes -->
-    <div class="hearts" id="hearts"></div>
 
-    <div class="container">
-        <!-- Encabezado -->
-        <div class="header">
-            <h1>¡Feliz Cumpleaños Mi Amor!</h1>
-            <p>Cada foto cuenta una historia de nosotros... ❤️</p>
-        </div>
+<!-- CORAZONES -->
+<div class="hearts" id="hearts"></div>
 
-        <!-- Contador -->
-        <div class="photo-counter">
-            <span id="counter">Foto 1 de 7</span>
-        </div>
+<!-- =========================
+     PORTADA
+========================= -->
 
-        <!-- Galería -->
-        <div class="gallery-container">
-            <div class="photo-frame">
-                <img id="photo" src="" alt="Nuestro recuerdo">
-            </div>
+<section class="cover" id="cover">
 
-            <div class="message-box">
-                <p class="message-text" id="message"></p>
-            </div>
+    <div class="cover-content">
 
-            <!-- Controles -->
-            <div class="controls">
-                <button class="btn btn-nav" id="prevBtn" onclick="changePhoto(-1)">◀</button>
-                <button class="btn" onclick="randomPhoto()">🎲 Aleatoria</button>
-                <button class="btn btn-nav" id="nextBtn" onclick="changePhoto(1)">▶</button>
-            </div>
+        <div class="cover-heart">❤️</div>
 
-            <!-- Indicadores -->
-            <div class="indicators" id="indicators"></div>
-        </div>
+        <h1>Para el amor de mi vida</h1>
 
-        <!-- Mensaje final -->
-        <div class="final-message">
-            <h2>Gracias por ser mi compañera de vida</h2>
-            <p>Este es solo el comienzo de nuestra historia. Cada día a tu lado es un regalo, 
-               y prometo seguir construyendo recuerdos inolvidables contigo. 
-               Te amo más de lo que las palabras pueden expresar. 💕</p>
-        </div>
+        <p>
+            Preparé algo pequeño para ti...
+            pero viene con todo mi corazón.
+        </p>
+
+        <button class="start-button" onclick="startPage()">
+            Abrir mi regalo 💕
+        </button>
+
     </div>
 
-    <!-- Botón de música (opcional - necesitas agregar tu archivo de audio) -->
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+</section>
 
-    <script>
-        // Datos de fotos y mensajes - AHORA CON TUS 7 FOTOS EN BASE64
-        const photos = [
-            {
-                // Foto 1
-                src: "data:image/jpeg;base64,/9j/4AASSkZYWABXQQAAAAAAAAAAAP/bAIQABQYGCwgLCwsLCw0LCwsNDg4NDQ4ODw0ODg4NDxAQEBEREBAQEA8TEhMPEBETFBQTERMWFhYTFhUVFhkWGRYWEgEFBQUKBwoICQkICwgKCAsKCgkJCgoMCQoJCgkMDQsKCwsKCw0MCwsICwsMDAwNDQwMDQoLCg0MDQ0MExQTExOc/8AAEQgHgAQ4AwEiAAIRAQMRAf/EAL8AAQACAwEBAQEAAAAAAAAAAAACAwEEBQYHCQgBAQADAQEBAAAAAAAAAAAAAAABAgMEBQYQAAIBAgMEBgQHDQMJBwIHAAABAgMRBBIhIjFBUQUTMmFxgUJSkaEGFCNiscHRBxYzU1VygoSSlLTh8BU20yRDk6Kys8LS8SUmNDVjc4NE4kVUZHSjw/IRAQACAgAEBQIEBgICAwEAAAABAgMRBBIhMRNBUWFxMoEiUnKxBRQVkaHBQtEj8DNi8eH/2gAMAwEAAhEDEQA/AP4yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9Jgvgt0rjaUa+G6Mx2IoTvkq0sLWq05ZW4vLOEHF2kmnZ700ebP0d+41/dfoz9a/jK5Eol/CX3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UsEcyNvy0+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6lAcxt+Wv3kdOfkbpL9yxH+GPvI6c/I3SX7liP8M/UoDmNvy1+8jpz8jdJfuWI/wx95HTn5G6S/csR/hn6
+
+<!-- =========================
+     PAGINA PRINCIPAL
+========================= -->
+
+<main class="main-page" id="mainPage">
+
+<div class="container">
+
+    <header class="header">
+
+        <h1>Feliz Cumpleaños, Mi Amor ❤️</h1>
+
+        <p>
+            Hoy quiero recordarte lo especial que eres para mí.
+        </p>
+
+    </header>
+
+
+    <section class="gallery-container">
+
+        <div class="photo-counter" id="counter">
+            1 / 8
+        </div>
+
+        <div class="photo-frame" id="photoFrame">
+
+            <img
+                id="photo"
+                src=""
+                alt="Pareja anime romántica"
+            >
+
+        </div>
+
+
+        <div class="message-box">
+
+            <h2 id="messageTitle">
+                Mi persona favorita ❤️
+            </h2>
+
+            <p id="message">
+                No necesito una ocasión especial para decirte cuánto
+                significas para mí, pero hoy quiero recordártelo.
+            </p>
+
+        </div>
+
+
+        <div class="controls">
+
+            <button class="control-button" onclick="previousPhoto()">
+                ← Anterior
+            </button>
+
+            <button class="control-button" onclick="nextPhoto()">
+                Siguiente →
+            </button>
+
+        </div>
+
+
+        <div class="tap-hint">
+            👆 Toca la imagen o la pantalla para continuar
+        </div>
+
+    </section>
+
+
+    <!-- CARTA -->
+
+    <section class="letter">
+
+        <h2>Una pequeña carta para ti 💌</h2>
+
+        <p>
+            Hoy es tu día, y aunque unas palabras no pueden expresar
+            todo lo que siento, quiero que sepas que me alegra
+            muchísimo poder compartir momentos contigo.
+        </p>
+
+        <br>
+
+        <p>
+            Espero que este nuevo año de tu vida esté lleno de
+            sonrisas, sueños cumplidos, momentos bonitos y muchas
+            razones para ser feliz.
+        </p>
+
+        <br>
+
+        <p>
+            Gracias por existir, por ser tú y por formar parte
+            de mi vida.
+        </p>
+
+        <div class="signature">
+            Con todo mi amor ❤️
+        </div>
+
+    </section>
+
+
+    <footer>
+        Hecho especialmente para ti ❤️
+    </footer>
+
+</div>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   IMÁGENES
+   =====================================================
+
+   Aquí puedes cambiar las imágenes fácilmente.
+
+   IMPORTANTE:
+   No uses enlaces de Google Imágenes directamente.
+   Usa URLs directas de imágenes o imágenes que hayas
+   subido a tu propio repositorio de GitHub.
+
+===================================================== */
+
+const fotos = [
+
+    {
+        url: "https://www.publicdomainpictures.net/pictures/540000/velka/simple-anime-vector.jpg",
+        titulo: "Mi persona favorita ❤️",
+        mensaje: "Entre tantas personas en este mundo, me alegra muchísimo que nuestros caminos se hayan encontrado."
+    },
+
+    {
+        url: "https://www.publicdomainpictures.net/pictures/540000/velka/simple-anime-vector.jpg",
+        titulo: "Tú y yo 🌸",
+        mensaje: "No importa dónde estemos, cualquier lugar puede convertirse en un lugar bonito cuando estoy contigo."
+    },
+
+    {
+        url: "https://c.pxhere.com/photos/e0/3d/clipart_digital_wedding_love_graphics_bride_event-1197482.jpg!d",
+        titulo: "Un momento contigo 💕",
+        mensaje: "Hay momentos pequeños que terminan convirtiéndose en recuerdos enormes."
+    },
+
+    {
+        url: "https://www.publicdomainpictures.net/pictures/540000/velka/simple-anime-vector.jpg",
+        titulo: "Siempre contigo 🌙",
+        mensaje: "Quiero seguir creando recuerdos, riéndonos de tonterías y disfrutando cada momento."
+    },
+
+    {
+        url: "https://c.pxhere.com/photos/e0/3d/clipart_digital_wedding_love_graphics_bride_event-1197482.jpg!d",
+        titulo: "Mi lugar favorito ❤️",
+        mensaje: "A veces no es un lugar. Es simplemente estar junto a la persona que quieres."
+    },
+
+    {
+        url: "https://www.publicdomainpictures.net/pictures/540000/velka/simple-anime-vector.jpg",
+        titulo: "Un nuevo capítulo ✨",
+        mensaje: "Ojalá podamos llenar este nuevo capítulo de aventuras, risas y momentos que nunca olvidemos."
+    },
+
+    {
+        url: "https://c.pxhere.com/photos/e0/3d/clipart_digital_wedding_love_graphics_bride_event-1197482.jpg!d",
+        titulo: "Para ti 💗",
+        mensaje: "Este pequeño regalo no vale por lo que contiene, sino por el cariño con el que fue preparado."
+    },
+
+    {
+        url: "https://www.publicdomainpictures.net/pictures/540000/velka/simple-anime-vector.jpg",
+        titulo: "Feliz cumpleaños, mi amor 🎂❤️",
+        mensaje: "Espero que hoy sonrías muchísimo. Te mereces un día tan bonito como tú."
+    }
+
+];
+
+let currentPhoto = 0;
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+function startPage() {
+
+    document.getElementById("cover").style.display = "none";
+
+    document.getElementById("mainPage").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    showPhoto(0);
+
+}
+
+
+/* =====================================================
+   MOSTRAR FOTO
+===================================================== */
+
+function showPhoto(index) {
+
+    currentPhoto = index;
+
+    const photo = document.getElementById("photo");
+    const frame = document.getElementById("photoFrame");
+
+    frame.classList.add("fade");
+
+    setTimeout(() => {
+
+        photo.src = fotos[index].url;
+
+        document.getElementById("counter").textContent =
+            `${index + 1} / ${fotos.length}`;
+
+        document.getElementById("messageTitle").textContent =
+            fotos[index].titulo;
+
+        document.getElementById("message").textContent =
+            fotos[index].mensaje;
+
+        photo.onload = () => {
+            frame.classList.remove("fade");
+        };
+
+    }, 250);
+
+}
+
+
+/* =====================================================
+   SIGUIENTE
+===================================================== */
+
+function nextPhoto() {
+
+    let next = currentPhoto + 1;
+
+    if (next >= fotos.length) {
+        next = 0;
+    }
+
+    showPhoto(next);
+}
+
+
+/* =====================================================
+   ANTERIOR
+===================================================== */
+
+function previousPhoto() {
+
+    let previous = currentPhoto - 1;
+
+    if (previous < 0) {
+        previous = fotos.length - 1;
+    }
+
+    showPhoto(previous);
+}
+
+
+/* =====================================================
+   TOCAR PANTALLA
+===================================================== */
+
+document.addEventListener("click", function(event) {
+
+    if (
+        event.target.closest(".control-button") ||
+        event.target.closest(".start-button")
+    ) {
+        return;
+    }
+
+    createClickHeart(event.clientX, event.clientY);
+
+});
+
+
+/* =====================================================
+   CORAZÓN AL TOCAR
+===================================================== */
+
+function createClickHeart(x, y) {
+
+    const heart = document.createElement("div");
+
+    heart.className = "click-heart";
+
+    heart.textContent = "❤️";
+
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 1000);
+
+}
+
+
+/* =====================================================
+   SWIPE EN CELULAR
+===================================================== */
+
+let touchStartX = 0;
+
+document.addEventListener("touchstart", function(event) {
+
+    touchStartX = event.changedTouches[0].screenX;
+
+});
+
+
+document.addEventListener("touchend", function(event) {
+
+    const touchEndX = event.changedTouches[0].screenX;
+
+    const difference = touchStartX - touchEndX;
+
+    if (Math.abs(difference) > 70) {
+
+        if (difference > 0) {
+            nextPhoto();
+        } else {
+            previousPhoto();
+        }
+
+    }
+
+});
+
+
+/* =====================================================
+   CORAZONES FLOTANTES
+===================================================== */
+
+function createFloatingHearts() {
+
+    const container = document.getElementById("hearts");
+
+    for (let i = 0; i < 25; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.textContent =
+            Math.random() > .5 ? "❤" : "♡";
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
+        heart.style.fontSize =
+            (12 + Math.random() * 25) + "px";
+
+        heart.style.animationDuration =
+            (6 + Math.random() * 8) + "s";
+
+        heart.style.animationDelay =
+            Math.random() * 8 + "s";
+
+        container.appendChild(heart);
+
+    }
+
+}
+
+createFloatingHearts();
+
+
+/* =====================================================
+   TECLADO
+===================================================== */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "ArrowRight") {
+        nextPhoto();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousPhoto();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
